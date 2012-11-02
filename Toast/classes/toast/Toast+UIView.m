@@ -206,11 +206,14 @@ static NSString *kDurationKey = @"CSToastDurationKey";
     if([point isKindOfClass:[NSString class]]) {
         
         if( [point caseInsensitiveCompare:@"top"] == NSOrderedSame ) {
-            return CGPointMake(self.bounds.size.width/2, (toast.frame.size.height / 2) + kVerticalPadding);
+            return CGPointMake(floorf(self.bounds.size.width/2),
+                               floorf(toast.frame.size.height / 2) + kVerticalPadding);
         } else if( [point caseInsensitiveCompare:@"bottom"] == NSOrderedSame ) {
-            return CGPointMake(self.bounds.size.width/2, (self.bounds.size.height - (toast.frame.size.height / 2)) - kVerticalPadding);
+            return CGPointMake(floorf(self.bounds.size.width/2),
+                               floorf(self.bounds.size.height - (toast.frame.size.height / 2)) - kVerticalPadding);
         } else if( [point caseInsensitiveCompare:@"center"] == NSOrderedSame ) {
-            return CGPointMake(self.bounds.size.width / 2, self.bounds.size.height / 2);
+            return CGPointMake(floorf(self.bounds.size.width / 2),
+                               floorf(self.bounds.size.height / 2));
         }
         
     } else if ([point isKindOfClass:[NSValue class]]) {
